@@ -10,6 +10,9 @@ import com.example.springbootrehab.dto.MemberForm;
 import com.example.springbootrehab.entity.Member;
 import com.example.springbootrehab.repository.MemberRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class MemberController {
 	@Autowired
@@ -23,11 +26,14 @@ public class MemberController {
 
 	@PostMapping("/join")
 	public String memberSignup(MemberForm form) {
-		System.out.println(form.toString());
+		log.info(form.toString());
+		// System.out.println(form.toString());
 		Member member = form.toEntity();
-		System.out.println(member.toString());
+		log.info(member.toString());
+		// System.out.println(member.toString());
 		Member saved = memberRepository.save(member);
-		System.out.println(saved.toString());
+		log.info(saved.toString());
+		// System.out.println(saved.toString());
 		return "";
 	}
 }
